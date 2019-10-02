@@ -10,13 +10,23 @@ export class SearchComponent {
 
   artistas: any[] = [];
 
-  constructor( private _spotify: SpotifyService) { }
+  loading: boolean;
+
+  constructor( private _spotify: SpotifyService) {
+
+
+   }
+
 
   buscar( termino: string ){
+
+    this.loading = true;
+
     this._spotify.getArtista( termino )
       .subscribe( (data: any) => {
         console.log(data);
         this.artistas = data;
+        this.loading = false;
       });
   }
 
