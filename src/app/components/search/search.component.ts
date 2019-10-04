@@ -12,6 +12,8 @@ export class SearchComponent {
 
   loading: boolean;
 
+  buscando: boolean;
+
   constructor( private _spotify: SpotifyService) {
 
 
@@ -19,6 +21,8 @@ export class SearchComponent {
 
 
   buscar( termino: string ){
+
+    this.buscando = true;
 
     this.loading = true;
 

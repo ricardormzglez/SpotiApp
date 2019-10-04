@@ -39,10 +39,14 @@
             <td>{{ track.album.name }}</td>
             <td>{{ track.name }}</td>
             <td>
-              <iframe *ngIf="track.uri != null" [src]="track.uri | domseguro:'https://open.spotify.com/embed?uri='" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <audio *ngIf="track.preview_url != null" [src]="track.preview_url" controls></audio>
+                <div *ngIf="track.preview_url == null" class="alert alert-success text-center">
+                    <strong>Sin vista previa</strong>
+                  </div>
+              <!-- <iframe *ngIf="track.uri != null" [src]="track.uri | domseguro:'https://open.spotify.com/embed?uri='" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
               <div *ngIf="track.uri == null" class="alert alert-success text-center">
                 <strong>Sin vista previa</strong>
-              </div>
+              </div> -->
               <!-- <audio *ngIf="track.preview_url != null" [src]="track.preview_url" controls></audio> -->
             </td>
           </tr>

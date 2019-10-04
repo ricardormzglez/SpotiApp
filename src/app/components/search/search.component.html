@@ -5,7 +5,10 @@
 </div>
 
 <app-loading class="m-5" *ngIf="loading">
-  Buscando...
 </app-loading>
+
+<div *ngIf="artistas.length == 0 && buscando" class="alert alert-success m-5" role="alert">
+  <strong>No hay resultados para "{{ termino.value }}"</strong>
+</div>
 
 <app-tarjetas [items]="artistas"></app-tarjetas>
