@@ -12,6 +12,10 @@ export class HomeComponent implements OnInit {
 
   loading: boolean;
 
+  error: boolean;
+
+  mensajeError = 'Excepción inesperada, contactar con Ricardo Ramírez.';
+
   constructor( private _spotify: SpotifyService) {
 
     this.loading = true;
@@ -21,6 +25,11 @@ export class HomeComponent implements OnInit {
         console.log(data);
         this.nuevasCanciones = data;
         this.loading = false;
+      }, (error) => {
+        if(this.loading){
+          this.error = true;
+        }
+        this.mensajeError = error.error.error.message;
       });
 
    }
